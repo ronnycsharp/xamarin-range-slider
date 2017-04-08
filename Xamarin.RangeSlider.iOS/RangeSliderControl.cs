@@ -713,7 +713,7 @@ namespace Xamarin.RangeSlider
             var thumbRect = new CGRect();
             var insets = thumbImage.CapInsets;
 
-            thumbRect.Size = new CGSize(thumbImage.Size.Width, thumbImage.Size.Height);
+            thumbRect.Size = new CGSize(thumbImage.Size.Width * 0.4f, thumbImage.Size.Height * 0.4f);
 
             var height = Bounds.Size.Height - SpaceAboveThumbs;
             if (Math.Abs(insets.Top) > float.Epsilon || Math.Abs(insets.Bottom) > float.Epsilon)
@@ -723,7 +723,9 @@ namespace Xamarin.RangeSlider
 
             var xValue = ((float)Bounds.Size.Width - (float)thumbRect.Size.Width) *
                          ((value - MinimumValue) / (MaximumValue - MinimumValue));
-            thumbRect.X = (float)Math.Round(xValue);
+           
+
+			thumbRect.X = (float)Math.Round(xValue);
             thumbRect.Y = SpaceAboveThumbs + height / 2.0f - thumbRect.Size.Height / 2.0f;
 
             return thumbRect.Integral();
